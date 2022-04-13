@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+        maven {
+            url 'http://maven.vivo.xyz/nexus/content/repositories/releases'
+        }
+    }
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.vivo.pushdemo.test"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 20
+        versionName "1.0"
+        flavorDimensions "versionCode"
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    productFlavors {
+        openClient {
+            applicationId = "com.lokinfo.android.gamemarket.mmshow"
+            manifestPlaceholders.put("app_name", 'OpenClient-' + String.valueOf(curSdkVersion + 2000))
+            manifestPlaceholders.put("sdk_version", String.valueOf(curSdkVersion + 2000))
+//            manifestPlaceholders.put("api_key", '9c29fe5f-ea67-46d3-951f-81da78d2c029')
+//            manifestPlaceholders.put("app_id", '10000')
+            manifestPlaceholders.put("api_key", '7bffcd68d3495ebccbed9c48dc372c83')
+            manifestPlaceholders.put("app_id", '100028770')
+            buildConfigField("int", "appType", "1")
+            versionCode 20
+            buildConfigField 'long', 'SDK_VERSION', String.valueOf(curSdkVersion + 2000)
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    openClientImplementation files('libs\\pushOpenClient_v3.0.0.2_482_ee77d44_release.aar')
+}
+

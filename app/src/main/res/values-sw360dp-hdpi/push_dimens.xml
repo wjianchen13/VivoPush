@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <dimen name="push_notify_cover_height">146dp</dimen>
+    <dimen name="push_notify_icon_height">57dp</dimen>
+    <dimen name="push_notify_icon_height_rom20">28dp</dimen>
+    <dimen name="push_notify_icon_height_rom30">30dp</dimen>
+    <dimen name="push_notify_icon_padding">9dp</dimen>
+    <dimen name="push_notify_icon_marginLeft">4dp</dimen>
+    <dimen name="push_notify_icon_marginRight">13dp</dimen>
+</resources>

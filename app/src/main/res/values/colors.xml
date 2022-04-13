@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="log_ui_level_warn">#ffa5e02e</color>
+    <color name="log_ui_level_error">#fff52670</color>
+    <color name="log_ui_date">#ffffe792</color>
+</resources>

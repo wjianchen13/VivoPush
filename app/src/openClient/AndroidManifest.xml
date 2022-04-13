@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vivo.pushsdk">
+
+    <application
+        android:name="com.vivo.pushsdk.PushApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:label="${app_name}"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.vivo.pushsdk.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".CustomActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.vivo.pushtest"
+                    android:path="/detail"
+                    android:scheme="vpushscheme" />
+            </intent-filter>
+        </activity>
+
+
+        <meta-data
+            android:name="com.vivo.push.api_key"
+            android:value="${api_key}" />
+
+        <meta-data
+            android:name="com.vivo.push.app_id"
+            android:value="${app_id}" />
+
+
+
+        <!-- push应用定义消息receiver声明 -->
+
+        <receiver android:name="com.vivo.pushsdk.PushMessageReceiverImpl"
+            android:exported="false">
+
+            <intent-filter>
+
+                <!-- 接收push消息 -->
+
+                <action android:name="com.vivo.pushclient.action.RECEIVE"/>
+
+            </intent-filter>
+
+        </receiver>
+
+        <service
+            android:name="com.vivo.push.sdk.service.CommandClientService"
+            android:permission="com.push.permission.UPSTAGESERVICE"
+            android:exported="true"/>
+
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
